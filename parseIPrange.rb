@@ -21,7 +21,12 @@ end
 
 #read the headers into ... headers :-)
 headers = CSV.open('filename', 'r') { |a| a.first }
-#above should also count number of columns, to pass on later or cause error.
+
+#check if too many columns. 3 is desirable.
+if headers[3]
+    puts "Too many columns in file. Try again"
+    exit
+end
 
 puts "Headers"
 puts "first: #{headers[0]}"
@@ -32,7 +37,7 @@ puts ""
 puts ""
 
 CSV.foreach('filename', {:headers => true, :encoding => "ISO-8859-15:UTF-8"}) do |row|
-    #cool trick to check if string contains "/"
+    #check if string contains "/"
     if row[headers[0]]["/"]
         netcidr(row[headers[0]], row[headers[2]])
     else
