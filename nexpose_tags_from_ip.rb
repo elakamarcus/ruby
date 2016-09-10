@@ -4,7 +4,7 @@ require 'nexpose'
 
 # Copied from MrPaul -- login method, instead of hardcoding username and password.
 # https://github.com/misterpaul/NexposeRubyScripts/
-default_host = '10.2.7.80'
+default_host = '192.168.0.2'
 default_port = 3780
 default_name = 'nxadmin'
 
