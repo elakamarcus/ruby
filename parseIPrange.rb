@@ -35,12 +35,6 @@ if headers[3]
     exit
 end
 
-=begin #Was nice for testing
-puts "Headers"
-puts "first: #{headers[0]}"
-puts "second: #{headers[1]}"
-puts "third: #{headers[2]}"
-=end
 
 CSV.foreach('filename', {:headers => true, :encoding => "ISO-8859-15:UTF-8"}) do |row|
 if testIP(row[headers[0]])
