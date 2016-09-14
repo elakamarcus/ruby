@@ -1,4 +1,4 @@
-ipstart, ipend, location
-192.168.0.0/16, , Home
-192.168.5.1, 10.168.5.255, livingroom
-192.168.1.1, 192.168.1.255, guest
+ipstart,ipend,location
+192.168.0.0/16, ,Home
+192.168.5.1,192.168.5.255,livingroom
+192.168.1.1,192.168.1.255,guest
