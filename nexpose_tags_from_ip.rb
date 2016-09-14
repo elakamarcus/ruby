@@ -8,8 +8,6 @@ require 'highline/import'
 # https://github.com/misterpaul/NexposeRubyScripts/
 =end ###############################
 
-
-
 default_host = '127.0.0.1'
 default_port = 3780
 default_name = 'nxadmin'
@@ -165,5 +163,4 @@ else
     puts "Expecting IPv4, either all octects or CIDR-notation on last octet."
     next
 end
-
 end
