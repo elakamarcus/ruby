@@ -33,7 +33,7 @@ default_file = 'ScanPlan_' + DateTime.now.strftime('%Y-%m-%d--%H%M') + '.csv'
  
 host = ask('Enter the server name (host) for Nexpose: ') { |q| q.default = default_host }
 user = ask('Enter your username: ') { |q| q.default = default_name }
-pass = ask('Enter your password: ') { |q| q.echo = '*' }
+pass = ask('Enter your password: ') { |q| q.echo = '' }
 file = ask('Enter the filename to save the results into: ') { |q| q.default = default_file }
  
 begin
