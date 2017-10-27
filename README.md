@@ -4,7 +4,7 @@ simple ruby scripts to help working with Nexpose Rapid7.
 
 ## compatability
 
-The code is designed for Ruby 2.3.0 and Nexpose 5.1.0 (gem)
+The code is designed for Ruby 2.3.0 and Nexpose 5.1.0 (gem).
 
 ## scripts
 
