@@ -33,10 +33,10 @@ at_exit { $nsc.logout }
 #
 # if there is a cidr in second column, the third column is ignored.
 # 2018-05-18: Update to match new version of NetAddr
+# 2018-05-21: Have yet to verify the Nexpose API, current version 7.x, script originally made for 5.x
 =end ###############################
 
 # Check if tag exist, return true||false
- 
 def isExist(name)
     # put all tags into tags
     tags = $nsc.list_tags
