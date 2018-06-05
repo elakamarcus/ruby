@@ -179,4 +179,3 @@ else
     puts "Expecting IPv4, either all octects or CIDR-notation on last octet."
     next
 end
-end

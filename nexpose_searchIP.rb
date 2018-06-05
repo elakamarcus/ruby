@@ -16,16 +16,26 @@ at_exit { $nsc.logout }
 =end
 
 def SearchTag(addr)
-    tag = "tag"
-    return tag
+#    tag = "tag"
+#    return tag
 
-=begin
+
     tags = $nsc.list_tags
-    for { |t| in tags }
+
+    # Need a way to loop through tags, for tag in tags~ 
+
+        # not sure if criterion and critera are necessary, saving it here
+
+        # This only supplies one address as argument, below to be reviewed.
+        criterion = Nexpose::Tag::Criterion.new('IP_RANGE', 'IN_RANGE', [addr1, addr2])
+        criteria = Nexpose::Tag::Criteria.new(criterion)
         if tag.search_criteria.criteria.map(&:value).flatten.uniq.include?(cidr.nth(0))
-        return tag
+            return tag
+        else
+            return "False"
+        end
 end
-=end
+
 def SearchSite(addr)
     site = "Site"
     return site
@@ -46,8 +56,9 @@ def getAddr(addr)
     if testIP(addr)
         #check if string contains "/"
         if addr.to_s.include? "/"
-            # cidr-notation spotted, ignoring second column
+            # cidr-notation
             cidr = NetAddr::IPv4Net.parse(addr1)
+            # using the first IP of the range
             return cidr.nth(0)
         else
             return addr
@@ -59,9 +70,9 @@ def getAddr(addr)
 end
 
 if argv[1]
-    SearchTag(getAddr(addr))
-    SearchSite(getAddr(addr))
+    SearchTag(getAddr(argv[1]))
+    SearchSite(getAddr(argv[1]))
 else   
-    puts "Execute with single IP or Cidr as parameter\nE.g. 192.168.0.1/24 or 192.168.10.45"
+    puts "Execute with single IPv4 or CIDR as parameter\nE.g. 192.168.0.1/24 or 192.168.10.45"
 end
 
