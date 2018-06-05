@@ -1,5 +1,5 @@
 # Nexpose search IP return tag, asset etc.
-
+# consider remove netaddr, as NexposeAPI has IPRange
 require 'netaddr'
 require 'nexpose'
 
@@ -16,23 +16,16 @@ at_exit { $nsc.logout }
 =end
 
 def SearchTag(addr)
-#    tag = "tag"
-#    return tag
-
-
+    # load all tags
     tags = $nsc.list_tags
-
-    # Need a way to loop through tags, for tag in tags~ 
-
+    # loop through tags, for tag in tags~ 
+    tags.each do |tag|
         # not sure if criterion and critera are necessary, saving it here
-
-        # This only supplies one address as argument, below to be reviewed.
-        criterion = Nexpose::Tag::Criterion.new('IP_RANGE', 'IN_RANGE', [addr1, addr2])
-        criteria = Nexpose::Tag::Criteria.new(criterion)
+        # if there is a hit on the IP, return tag name.
         if tag.search_criteria.criteria.map(&:value).flatten.uniq.include?(cidr.nth(0))
-            return tag
+            return "Tag: #{tag.name}\nType: #{tag.type}"
         else
-            return "False"
+            next
         end
 end
 

@@ -1,3 +1,4 @@
+# consider remove netaddr, as NexposeAPI has IPRange
 require 'netaddr'
 require 'CSV'
 require 'nexpose'
